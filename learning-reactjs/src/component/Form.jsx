@@ -3,46 +3,47 @@ import { useState } from "react";
 // import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
 
 const Form = () => {
-     
-     let obj = { value: "" };
+     const [objstate, setobj] = useState("");
      const [arrobjstate, setarrobjstate] = useState([]);
-
      const btnClick = () => {
-          setarrobjstate((arrobj) => [...arrobj, obj]);
+          setarrobjstate((arrobjcstate) => [...arrobjstate, objstate]);
+
+          console.log(arrobjstate.length);
      };
-     const inputOnChange = (event) => {
-          obj.value = event.target.value;
-          console.log(obj.value);
-     };
-   
+
      let tableArr = arrobjstate.map((obj, index) => {
-        obj.index = index;
           return (
                <tr>
-                    <th scope="row">{obj.index+1}</th>
-                    <td>{obj.value}</td>
-                    
+                    <th scope="row">{index + 1}</th>
+                    <td>{obj}</td>
+
                     <td>
-                         <button className="btn btn-danger" onClick={() => deleteOnClick(obj.index)}>Delete</button>
+                         <button
+                              className="btn btn-danger"
+                              onClick={() => deleteOnClick(index)}
+                         >
+                              Delete
+                         </button>
                     </td>
                </tr>
           );
      });
-     const deleteOnClick = index => {
-            console.log(index)
-         let arrtemp = arrobjstate.filter(obj => obj.index !==index)
-         setarrobjstate(arrtemp)
-       
-    }
+     const deleteOnClick = (index) => {
+         let temp = [...arrobjstate]
+         temp.splice(index,1)
+         setarrobjstate(temp)
+        //  setarrobjstate(arrobjstate.splice(index,1))
+        //   setarrobjstate((arrobjstate) =>
+        //        arrobjstate.filter((item, i) => i !== index)
+        //   );
+     };
      return (
           <div>
-              
-               <input onChange={inputOnChange} />{" "}
+               <input onChange={(event) => setobj(event.target.value)} />{" "}
                <button className="btn btn-light" onClick={() => btnClick()}>
                     Thêm
                </button>
                <br></br>
-            
                <br />
                <table className="table">
                     <thead className="thead-dark">
