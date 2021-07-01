@@ -25,7 +25,7 @@ const Nav = () => {
      };
      const listLink = [
           { label: "Trang chủ", to: "/show-list", activeOnlyWhenExact: true },
-          { label: "Shop", to: "/shop", activeOnlyWhenExact: true },
+          { label: "Form", to: "/Form", activeOnlyWhenExact: true },
          
      ];
      const mapLinkList = listLink.map((link,index) => {

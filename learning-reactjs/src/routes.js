@@ -1,7 +1,7 @@
 
-import RouteA from "./component/RouteA";
+import Form from "./component/Form";
 const routes = [
-     { path: "/show-list", component: RouteA, exact: true },
+     { path: "/form", component: Form, exact: true },
      // { path: "", component: NotFound, exact: true }
      // {path:"/show-list", component: RouteA, exact: true}
 ];
