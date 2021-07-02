@@ -15,7 +15,7 @@ const Nav = () => {
                                         className={`nav-link ${matchClass}`}
                                         to={to}
                                    >
-                                        {label}
+                                        <b >{label}</b>
                                    </Link>
                               </li>
                          );
@@ -24,8 +24,9 @@ const Nav = () => {
           );
      };
      const listLink = [
-          { label: "Trang chủ", to: "/show-list", activeOnlyWhenExact: true },
+          { label: "Trang chủ", to: "/", activeOnlyWhenExact: true },
           { label: "Form", to: "/Form", activeOnlyWhenExact: true },
+          { label: "Redux", to: "/listbook", activeOnlyWhenExact: true },
          
      ];
      const mapLinkList = listLink.map((link,index) => {
@@ -33,7 +34,7 @@ const Nav = () => {
      })
      return (
           <div>
-               <ul className="nav justify-content-center">
+               <ul className="justify-content-center nav bg-light ">
                     {mapLinkList}
                </ul>
           </div>
