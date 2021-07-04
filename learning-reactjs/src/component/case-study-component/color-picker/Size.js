@@ -6,19 +6,19 @@ const Size = (props) => {
      const [sizestate, setsizestate] = useState(8)
     const plusSize = ()=>{
          setsizestate(sizestate+1)
-        props.size(sizestate)
+        props.size(sizestate+1)
 
     }
     const minusSize = ()=>{
         if(sizestate===8) setsizestate(8)
         else
         setsizestate(sizestate-1)
-        props.size(sizestate)
+        props.size(sizestate-1)
         
     }
     const resetOnClick = () =>{
-        setsizestate(8);  
-        props.size(sizestate)
+        setsizestate(8)  
+        props.size(8)
         props.color('lightblue')
     }
     return (
