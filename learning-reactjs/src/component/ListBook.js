@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { getListBooks } from "../redux/action/actListBook";
 const ListBook = () => {
@@ -15,60 +16,104 @@ const ListBook = () => {
           { id: 6, name: "Book Name 5", price: 11000, quantity: 2 },
           { id: 7, name: "Book Name 5", price: 11000, quantity: 2 },
      ];
+
      const saveListBooksToStore = () => {
           dispatch(getListBooks(books));
      };
+     const deleteOnClick = (index) => {
+          let temp = [...listBookstate]
+          temp.splice(index, 1)
+          setlistBookstate(temp)
+
+     };
+
+
      let tableListBooks = listBookstate.map((obj, index) => {
-         
+          obj.total = obj.quantity * obj.price
           return (
                <tr key={index}>
-                    <th scope="row">{index + 1}</th>
+                    <th scope="row">{obj.id}</th>
                     <td>{obj.name}</td>
                     <td>{obj.price}</td>
-                    <td><button className="btn btn-secondary">-</button> {obj.quantity} <button className= "btn btn-secondary">+</button></td>
 
+
+                    <td><button className="btn btn-secondary" onClick={()=> minusOnClick(index)}>-</button> {obj.quantity} <button className="btn btn-secondary" onClick={() => plusOnClick(index)}>+</button></td>
+                    <td>{obj.total}</td>
                     <td>
-                         <button className="btn btn-danger">Delete</button>
+                         <button className="btn btn-danger" onClick={() => deleteOnClick(index)}>Delete</button>
                     </td>
                </tr>
           );
      });
+     const plusOnClick = (index) => {
+          let items = [...listBookstate];
 
+          let item = { ...items[index] };
+
+          item.quantity = item.quantity + 1;
+          item.total = item.quantity * item.price
+          items[index] = item;
+
+          setlistBookstate(items);
+
+     }
+     const minusOnClick = (index) => {
+          let items = [...listBookstate];
+
+          let item = { ...items[index] };
+
+          item.quantity = item.quantity - 1;
+          if(item.quantity===0) deleteOnClick(index);
+          item.total = item.quantity * item.price
+          items[index] = item;
+
+          setlistBookstate(items);
+
+     }
      const showListBooks = () => {
           setlistBookstate(listBooksFromStore);
-     console.log(listBooksFromStore);
-          
+          // console.log(listBooksFromStore);
+
      };
+     const SaveToStore = () => {
+          dispatch(getListBooks(listBookstate));
+
+     }
+
 
      return (
-          <div>
-               <button
-                    type="button"
-                    className="btn btn-primary"
-                    onClick={() => saveListBooksToStore()}
-               >
-                    Đưa dữ liệu lên Store
-               </button>
+          <div >
+               <div >
 
-          
+                    <button
+                         type="button"
+                         className="btn btn-dark col-4"
+                         onClick={() => saveListBooksToStore()}
+                    >
+                         Đưa dữ liệu lên Store
+                    </button>
+
+
+
+                    <button
+                         type="button"
+                         className="btn btn-primary col-4"
+                         onClick={() => showListBooks()}
+                    >
+                         Xem dữ liệu
+                    </button>
+                    <button className="btn btn-danger col-4" onClick={() => SaveToStore()}>Lưu</button>
+               </div>
                <br></br>
-               <br></br>
-               <button
-                    type="button"
-                    className="btn btn-primary"
-                    onClick={() => showListBooks()}
-               >
-                    Xem dữ liệu
-               </button>
-              <br></br>
 
                <table className="table">
                     <thead className="thead-dark">
                          <tr>
-                              <th scope="col">STT</th>
-                              <th scope="col">Value</th>
+                              <th scope="col">ID</th>
+                              <th scope="col">Book name</th>
                               <th scope="col">Price</th>
                               <th scope="col">Quantity</th>
+                              <th scope="col">Total</th>
                               <th scope="col">Action</th>
                          </tr>
                     </thead>

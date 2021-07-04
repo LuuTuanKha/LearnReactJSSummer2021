@@ -1,6 +1,6 @@
 import React from 'react'
 import { Link } from 'react-router-dom'
-
+import ColorPickerReduxIndex from './color-picker-redux/ColorPickerReduxIndex';
 import ColorPickerIndex from './color-picker/ColorPickerIndex';
 import Form from '../Form';
 import { useState } from 'react';
@@ -8,7 +8,7 @@ import ListBook from '../ListBook';
 
 const CaseStudyIndex = () => {
 
-    const arr = ["Form", "Redux", "Color Picker", "link 4"]
+    const arr = ["Form", "Redux", "Color Picker", "Color Picker (Redux)"]
 
     const [currentIndex, setCurrentIndex] = useState(-1)
     const changeIndex = (index) => {
@@ -28,7 +28,7 @@ const CaseStudyIndex = () => {
                 <ul className="navbar-nav">
                     <li className="nav-item dropdown">
                         <Link className="nav-link dropdown-toggle" to="#" id="navbardrop" data-toggle="dropdown">
-                            Case Study
+                            CS Week01
                         </Link>
                         <div className="dropdown-menu">
                             {arrMap}
@@ -43,6 +43,7 @@ const CaseStudyIndex = () => {
             {currentIndex === 0 && <Form />}
             {currentIndex === 1 && <ListBook />}
             {currentIndex === 2 && <ColorPickerIndex />}
+            {currentIndex === 3 && <ColorPickerReduxIndex />}
 
         </div>
 
