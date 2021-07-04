@@ -2,6 +2,7 @@ import React from "react";
 import { Link, Route } from "react-router-dom";
 
 const Nav = () => {
+     
      const CustomLink = ({ label, to, activeOnlyWhenExact }) => {
           return (
                <Route
@@ -25,8 +26,9 @@ const Nav = () => {
      };
      const listLink = [
           { label: "Trang chủ", to: "/", activeOnlyWhenExact: true },
-          { label: "Form", to: "/Form", activeOnlyWhenExact: true },
-          { label: "Redux", to: "/listbook", activeOnlyWhenExact: true },
+          // { label: "Form", to: "/Form", activeOnlyWhenExact: true },
+          // { label: "Redux", to: "/listbook", activeOnlyWhenExact: true },
+          { label: "Case Study", to: "/case-study", activeOnlyWhenExact: true },
          
      ];
      const mapLinkList = listLink.map((link,index) => {
