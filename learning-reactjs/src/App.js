@@ -5,7 +5,7 @@ import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 function App() {
      const maproutes = routes.map((route, index) => {
           return (
-               <Route
+               <Route key={index}
                     path={route.path}
                     component={route.component}
                     exact={route.exact}

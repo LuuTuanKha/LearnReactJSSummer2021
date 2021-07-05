@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useEffect } from "react";
+
 import { useDispatch, useSelector } from "react-redux";
 import { getListBooks } from "../redux/action/actListBook";
 const ListBook = () => {
@@ -63,7 +63,9 @@ const ListBook = () => {
           let item = { ...items[index] };
 
           item.quantity = item.quantity - 1;
-          if(item.quantity===0) deleteOnClick(index);
+          if (item.quantity===0) deleteOnClick(index)
+          else{}
+          console.log( item.quantity + item.quantity===0)
           item.total = item.quantity * item.price
           items[index] = item;
 
