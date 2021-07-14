@@ -37,7 +37,7 @@ const ListBook = () => {
                     <td>{obj.price}</td>
 
 
-                    <td><button className="btn btn-secondary" onClick={()=> minusOnClick(index)}>-</button> {obj.quantity} <button className="btn btn-secondary" onClick={() => plusOnClick(index)}>+</button></td>
+                    <td><button className="btn btn-secondary" onClick={() => minusOnClick(index)}>-</button> {obj.quantity} <button className="btn btn-secondary" onClick={() => plusOnClick(index)}>+</button></td>
                     <td>{obj.total}</td>
                     <td>
                          <button className="btn btn-danger" onClick={() => deleteOnClick(index)}>Delete</button>
@@ -63,9 +63,9 @@ const ListBook = () => {
           let item = { ...items[index] };
 
           item.quantity = item.quantity - 1;
-          if (item.quantity===0) deleteOnClick(index)
-          else{}
-          console.log( item.quantity + item.quantity===0)
+          if (item.quantity === 0) deleteOnClick(index)
+          else { }
+          console.log(item.quantity + item.quantity === 0)
           item.total = item.quantity * item.price
           items[index] = item;
 

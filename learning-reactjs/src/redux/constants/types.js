@@ -1,2 +1,3 @@
 export const GET_LIST_BOOKS = 'GET_LIST_BOOKS'
+export const SET_ALL_PRODUCTS = 'SET_ALL_PRODUCTS'
 export const COLOR_PICKER = 'COLOR_PICKER'
